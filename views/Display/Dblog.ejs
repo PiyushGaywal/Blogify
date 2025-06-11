@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= blog.title %> | Blogify</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #24292e;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      color: white;
+    }
+
+    .logo {
+      font-size: 22px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #3f444a;
+      border-radius: 4px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background: none;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 110%;
+      right: 0;
+      background-color: #3f444a;
+      min-width: 120px;
+      border-radius: 5px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #555a60;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .blog-container {
+      max-width: 800px;
+      background: #fff;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .cover-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .blog-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    .blog-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 25px;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background-color: #24292e;
+      color: white;
+      transition: background 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #444c56;
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-right {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+      }
+
+      .blog-container {
+        margin: 20px 10px;
+        padding: 15px;
+      }
+
+      .blog-title {
+        font-size: 1.5rem;
+      }
+
+      .blog-body {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo">Blogify</a>
+    </div>
+    <div class="navbar-right">
+      <% if (typeof user !== 'undefined' && user) { %>
+        <a class="nav-link" href="/">Home</a>
+        <a href="/write" class="nav-link">Write Blog</a>
+        <div class="dropdown">
+          <button class="dropbtn"><%= user.name %> ▼</button>
+          <div class="dropdown-content">
+            <a href="/">Home</a>
+            <a href="/logout">Logout</a>
+          </div>
+        </div>
+      <% } else { %>
+        <a href="/login" class="nav-link">Login</a>
+        <a href="/signup" class="nav-link">Signup</a>
+      <% } %>
+    </div>
+  </nav>
+
+  <div class="blog-container">
+    <% if (blog.coverImageUrl) { %>
+      <img src="<%= blog.coverImageUrl %>" class="cover-img" alt="Blog Cover Image">
+    <% } %>
+    <h1 class="blog-title"><%= blog.title %></h1>
+    <div class="blog-body"><%= blog.body %></div>
+    <a href="/" class="back-button">← Back to Home</a>
+  </div>
+</body>
+</html>

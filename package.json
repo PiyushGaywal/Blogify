@@ -1,0 +1,32 @@
+{
+  "name": "blogify",
+  "version": "1.0.0",
+  "description": "A Blog App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": " nodemon node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PiyushGaywal/Blogify.git"
+  },
+  "author": "Piyush Gaywal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PiyushGaywal/Blogify/issues"
+  },
+  "homepage": "https://github.com/PiyushGaywal/Blogify#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.15.1",
+    "multer": "^2.0.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

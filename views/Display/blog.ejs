@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Display/blog.css" />
+    <title>Write The Blog</title>
+</head>
+<body>
+    <nav>
+        <%- include('../Partials/nav') %>
+    </nav>
+    <form action="" method="post" enctype="multipart/form-data">
+        <label for="title">Enter The Title</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="body">Enter The Content</label>
+        <textarea name="body" id="body" required></textarea>
+
+        <label for="cimg">Choose Cover Picture</label>
+        <input required type="file" id="cimg" accept="image/png, image/jpeg" name="coverImage">
+
+        <input type="submit" value="Sumbit Blog">
+    </form>
+</body>
+</html>
