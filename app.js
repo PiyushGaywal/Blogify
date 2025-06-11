@@ -8,6 +8,7 @@ const Blogs=require('./models/BlogSchema')
 const db=require('./Utils/db')
 const bw = require('./routes/blog');
 const path=require('path')
+require('dotenv').config();
 
 app.set('view engine','ejs')
 app.use(express.static('public'))
@@ -37,8 +38,7 @@ app.use('/blog', bw);
 app.use(AuthR)
 app.use(bw)
 
-Port=8000
-app.listen(Port,()=>{
-    console.log('Server Run Success');
-    
-})
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
