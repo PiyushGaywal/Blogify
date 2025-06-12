@@ -33,7 +33,7 @@ app.get('/logout', (req, res) => {
     });
 });
 app.get('/favicon.ico', (req, res) => res.status(204).end());
-app.use('/blog', bw);
+app.use('/blog',bw);
 
 app.use(AuthR)
 app.use(bw)

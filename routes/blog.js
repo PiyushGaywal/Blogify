@@ -4,6 +4,7 @@ const multer=require('multer')
 const path =require('path')
 const Blog=require('../models/BlogSchema')
 const lmid=require('../middleware/loginm')
+const isAdmin=require('../middleware/adminm')
 
 bw.get('/write',(req,res,next)=>{
     res.render('Display/blog')
@@ -38,6 +39,14 @@ bw.post('/write',upload.single("coverImage"),async(req,res,next)=>{
     return res.redirect('/')
     
 })
+bw.post('/blog/delete/:id', async (req, res) => {
+  try {
+    await Blog.findByIdAndDelete(req.params.id);
+    res.redirect('/');
+  } catch (err) {
+    res.status(500).send('Failed to delete blog');
+  }
+});
 
 
 
